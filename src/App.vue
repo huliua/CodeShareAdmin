@@ -3,9 +3,7 @@ import BaseLayout from '@/layout/BaseLayout/index.vue'
 </script>
 
 <template>
-  <div id="app">
-    <base-layout />
-  </div>
+  <base-layout />
 </template>
 
 <style scoped></style>
