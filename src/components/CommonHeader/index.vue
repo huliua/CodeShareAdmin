@@ -6,7 +6,9 @@ import {
   SettingOutlined,
   TeamOutlined,
   CodeOutlined,
-  CommentOutlined
+  CommentOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
 } from '@ant-design/icons-vue';
 import type { MenuProps } from 'ant-design-vue';
 import { useRouter } from 'vue-router';
@@ -21,6 +23,12 @@ const items = ref<MenuProps['items']>([
     title: '系统管理',
   },
   {
+    key: '/user',
+    icon: () => h(TeamOutlined),
+    label: '用户管理',
+    title: '用户管理',
+  },
+  {
     key: '/code',
     icon: () => h(CodeOutlined),
     label: '代码管理',
@@ -31,12 +39,6 @@ const items = ref<MenuProps['items']>([
     icon: () => h(CommentOutlined),
     label: '评论管理',
     title: '评论管理',
-  },
-  {
-    key: '/user',
-    icon: () => h(TeamOutlined),
-    label: '用户管理',
-    title: '用户管理',
   },
   {
     key: 'client',
@@ -60,7 +62,7 @@ const items = ref<MenuProps['items']>([
   },
 ]);
 
-const handleClick = function ({ key }: { key: string}) {
+const handleClick = function ({ key }: { key: string }) {
   const preKey: string = current.value[0];
   if (key.startsWith('/')) {
     router.push(key);
@@ -73,6 +75,13 @@ const handleClick = function ({ key }: { key: string}) {
   });
 };
 
+const { isCollapse } = defineProps({
+  isCollapse: Boolean,
+});
+const emit = defineEmits(['update:isCollapse']);
+const handleCollapseClick = function () {
+  emit('update:isCollapse', !isCollapse);
+};
 defineComponent({
   name: 'CommonHeader',
 });
@@ -81,9 +90,13 @@ defineComponent({
 <template>
   <div id="common-header">
     <a-row :align="'middle'" :wrap="false">
-      <a-col flex="300px" class="title-bar">
-        <img src="@/assets/logo.svg" class="logo" alt="logo" />
-        CodeShare代码分享平台
+      <a-col flex="50px">
+        <div v-show="isCollapse" class="collapse-icon" style="font-size: 24px">
+          <MenuUnfoldOutlined @click="handleCollapseClick" />
+        </div>
+        <div v-show="!isCollapse" class="collapse-icon" style="font-size: 24px">
+          <MenuFoldOutlined @click="handleCollapseClick" />
+        </div>
       </a-col>
       <a-col flex="auto">
         <a-menu
@@ -104,15 +117,9 @@ defineComponent({
 #common-header {
   height: 100%;
 }
-
-#common-header .logo {
-  width: 40px;
-}
-
-#common-header .title-bar {
+.collapse-icon {
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 18px;
+  align-items: center;
 }
 </style>
