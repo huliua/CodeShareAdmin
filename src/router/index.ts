@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'index',
-      component: () => import('../views/index.vue'),
+      component: () => import('@/views/index.vue'),
     },
     {
       path: '/system',
@@ -16,22 +16,22 @@ const router = createRouter({
         {
           path: '/system/dashboard',
           name: 'dashboard',
-          component: () => import('../views/system/index.vue'),
+          component: () => import('@/views/system/index.vue'),
         },
         {
           path: '/system/role',
           name: 'role',
-          component: () => import('../views/system/index.vue'),
+          component: () => import('@/views/system/index.vue'),
         },
         {
           path: '/system/permission',
           name: 'permission',
-          component: () => import('../views/system/index.vue'),
+          component: () => import('@/views/system/index.vue'),
         },
         {
           path: '/system/dict',
           name: 'dict',
-          component: () => import('../views/system/index.vue'),
+          component: () => import('@/views/system/index.vue'),
         },
       ],
     },
@@ -43,17 +43,17 @@ const router = createRouter({
         {
           path: '/user/list',
           name: 'userList',
-          component: () => import('../views/user/indexvue'),
+          component: () => import('@/views/user/index.vue'),
         },
         {
           path: '/user/online',
           name: 'online',
-          component: () => import('../views/user/indexvue'),
+          component: () => import('@/views/user/index.vue'),
         },
         {
           path: '/user/vip',
           name: 'vip',
-          component: () => import('../views/user/indexvue'),
+          component: () => import('@/views/user/index.vue'),
         },
       ],
     },
@@ -65,7 +65,7 @@ const router = createRouter({
         {
           path: '/code/list',
           name: 'codeList',
-          component: () => import('../views/system/indexvue'),
+          component: () => import('@/views/system/index.vue'),
         },
       ],
     },
@@ -77,7 +77,7 @@ const router = createRouter({
         {
           path: '/comment/list',
           name: 'commentList',
-          component: () => import('../views/user/indexvue'),
+          component: () => import('@/views/user/index.vue'),
         },
       ],
     },

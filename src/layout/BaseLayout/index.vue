@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { defineComponent } from 'vue'
-import CommonHeader from '@/components/CommonHeader/index.vue'
-import CommonSider from '@/components/CommonSider/index.vue'
-import { useMenuStore } from '@/stores/menu;
-import { useRouter } from 'vue-router;
+import { defineComponent } from 'vue';
+import CommonHeader from '@/components/CommonHeader/index.vue';
+import CommonSider from '@/components/CommonSider/index.vue';
+import { useMenuStore } from '@/stores/menu';
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
-const menuStore = useMenuStore()
+const router = useRouter();
+const menuStore = useMenuStore();
 defineComponent({
   name: 'BaseLayout',
 });
@@ -16,15 +16,15 @@ const link = 'https://github.com/huliua';
 
 // 监听路由变化，更新当前菜单选中状态
 router.afterEach((to, from) => {
-  const prePath = from.path
+  const prePath = from.path;
   if (to.path == '/client' || to.path == '/sourcecode') {
-    router.push(prePath)
-    return
+    router.push(prePath);
+    return;
   }
-  const pathArr = to.path.split('/')
-  menuStore.setHeaderSelectedKeys(['/' + pathArr[1]])
-  menuStore.setSideSelectedKeys([to.path])
-})
+  const pathArr = to.path.split('/');
+  menuStore.setHeaderSelectedKeys(['/' + pathArr[1]]);
+  menuStore.setSideSelectedKeys([to.path]);
+});
 </script>
 
 <template>

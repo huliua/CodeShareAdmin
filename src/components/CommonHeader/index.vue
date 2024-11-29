@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import { defineComponent, ref } from 'vue'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
-import type { MenuProps } from 'ant-design-vue'
-import { useRouter } from 'vue-router'
-import { useMenuStore } from '@/stores/men'
+import { defineComponent, ref } from 'vue';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
+import type { MenuProps } from 'ant-design-vue';
+import { useRouter } from 'vue-router';
+import { useMenuStore } from '@/stores/menu';
 
 const menuStore = useMenuStore();
 const router = useRouter();
 
 const handleCollapseClick = function () {
-  menuStore.setCollapsed(!menuStore.collapsed;
-;
-
-const items = ref<MenuProps['items']>(menuStore.getHeaderMenu();
-
+  menuStore.setCollapsed(!menuStore.collapsed);
+};
+const items = ref<MenuProps['items']>(menuStore.getHeaderMenu());
 const handleClick = function ({ key }: { key: string }) {
-  router.push(key)
+  router.push(key);
 };
 
 defineComponent({

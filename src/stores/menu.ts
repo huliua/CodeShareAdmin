@@ -1,21 +1,21 @@
 import { defineStore } from 'pinia';
 import { h, ref } from 'vue';
 import {
-  AuditOutlined,
-  CloudOutlined,
   CodeOutlined,
   CommentOutlined,
-  CrownOutlined,
-  DashboardOutlined,
   GithubOutlined,
-  IdcardOutlined,
-  LinkOutlined,
-  MessageOutlined,
-  PartitionOutlined,
   RocketOutlined,
   SettingOutlined,
   TeamOutlined,
+  AuditOutlined,
+  IdcardOutlined,
+  PartitionOutlined,
   UserOutlined,
+  CrownOutlined,
+  CloudOutlined,
+  LinkOutlined,
+  MessageOutlined,
+  DashboardOutlined,
 } from '@ant-design/icons-vue';
 import type { MenuProps } from 'ant-design-vue';
 

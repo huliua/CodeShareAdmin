@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { defineComponent } from 'vue'
-import SvgIconLight from '@/components/icons/SvgIconLight.vue'
-import OnlyIcon from '@/components/icons/OnlyIcon.vue'
-import { useMenuStore } from '@/stores/menu'
-import { useRouter } from 'vue-router'
+import { defineComponent } from 'vue';
+import SvgIconLight from '@/components/icons/SvgIconLight.vue';
+import OnlyIcon from '@/components/icons/OnlyIcon.vue';
+import { useMenuStore } from '@/stores/menu';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const menuStore = useMenuStore();
@@ -12,7 +12,7 @@ defineComponent({
 });
 
 const handleMenuClick = ({ key }: { key: string }) => {
-  router.push(ey;
+  router.push(key);
 };
 </script>
 
