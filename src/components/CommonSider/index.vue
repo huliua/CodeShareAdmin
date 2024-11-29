@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import { defineComponent } from 'vue';
-import SvgIcon from '@/components/icons/SvgIconDark.vue';
-import SvgIconLight from '@/components/icons/SvgIconLight.vue';
-import OnlyIcon from '@/components/icons/OnlyIcon.vue';
-const { isCollapse } = defineProps({
-  isCollapse: Boolean,
-});
+import { defineComponent } from 'vue'
+import SvgIconLight from '@/components/icons/SvgIconLight.vue'
+import OnlyIcon from '@/components/icons/OnlyIcon.vue'
+import { useMenuStore } from '@/stores/menu'
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
+const menuStore = useMenuStore();
 defineComponent({
   name: 'CommonSider',
 });
+
+const handleMenuClick = ({ key }: { key: string }) => {
+  router.push(ey;
+};
 </script>
 
 <template>
@@ -16,10 +21,18 @@ defineComponent({
     <a-flex gap="middle" vertical justify="center" align="center">
       <a-flex :vertical="true" style="width: 100%">
         <div class="title">
-          <svg-icon-light class="logo" v-show="!isCollapse" />
-          <only-icon class="logo collapse" v-show="isCollapse" />
+          <svg-icon-light class="logo" v-show="!menuStore.collapsed" />
+          <only-icon class="logo collapse" v-show="menuStore.collapsed" />
         </div>
-        <div class="menu">menu</div>
+        <div class="menu">
+          <a-menu
+            v-model:selectedKeys="menuStore.sideSelectedKeys"
+            mode="inline"
+            theme="dark"
+            :items="menuStore.getSideMenu()"
+            @click="handleMenuClick"
+          ></a-menu>
+        </div>
       </a-flex>
     </a-flex>
   </div>
@@ -31,6 +44,7 @@ defineComponent({
   width: 100%;
   color: white;
 }
+
 .title {
   height: 64px;
   display: flex;
@@ -45,6 +59,7 @@ defineComponent({
   width: 78%;
   height: 100%;
 }
+
 .logo.collapse {
   width: 50%;
 }

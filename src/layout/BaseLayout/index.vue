@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { defineComponent, ref } from 'vue';
-import CommonHeader from '@/components/CommonHeader/index.vue';
-import CommonSider from '@/components/CommonSider/index.vue';
+import { defineComponent } from 'vue'
+import CommonHeader from '@/components/CommonHeader/index.vue'
+import CommonSider from '@/components/CommonSider/index.vue'
+import { useMenuStore } from '@/stores/menu;
+import { useRouter } from 'vue-router;
 
+const router = useRouter()
+const menuStore = useMenuStore()
 defineComponent({
   name: 'BaseLayout',
 });
@@ -10,7 +14,17 @@ const currentYear = new Date().getFullYear();
 const developer = 'huliua';
 const link = 'https://github.com/huliua';
 
-const collapsed = ref(false);
+// 监听路由变化，更新当前菜单选中状态
+router.afterEach((to, from) => {
+  const prePath = from.path
+  if (to.path == '/client' || to.path == '/sourcecode') {
+    router.push(prePath)
+    return
+  }
+  const pathArr = to.path.split('/')
+  menuStore.setHeaderSelectedKeys(['/' + pathArr[1]])
+  menuStore.setSideSelectedKeys([to.path])
+})
 </script>
 
 <template>
@@ -19,15 +33,15 @@ const collapsed = ref(false);
       <a-layout-sider
         class="side"
         collapsible
-        v-model:collapsed="collapsed"
+        v-model:collapsed="menuStore.collapsed"
         width="250px"
         :trigger="null"
       >
-        <common-sider v-model:is-collapse="collapsed" />
+        <common-sider />
       </a-layout-sider>
       <a-layout class="main-layout">
         <a-layout-header class="header">
-          <common-header v-model:is-collapse="collapsed" />
+          <common-header />
         </a-layout-header>
         <a-layout-content class="content">
           <router-view />
