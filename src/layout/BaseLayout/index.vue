@@ -35,6 +35,8 @@ router.afterEach((to, from) => {
         collapsible
         v-model:collapsed="menuStore.collapsed"
         width="250px"
+        :theme="'dark'"
+        style="background: #001529"
         :trigger="null"
       >
         <common-sider />
@@ -65,7 +67,6 @@ router.afterEach((to, from) => {
 .footer {
   height: 30px;
   padding: 0;
-  background-color: #f0f2f5;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -75,7 +76,6 @@ router.afterEach((to, from) => {
 }
 
 .header {
-  background: white;
   padding: 0;
   height: 64px;
 }

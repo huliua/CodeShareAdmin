@@ -7,8 +7,11 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AApp: typeof import('ant-design-vue/es')['App']
     AButton: typeof import('ant-design-vue/es')['Button']
+    ACard: typeof import('ant-design-vue/es')['Card']
     ACol: typeof import('ant-design-vue/es')['Col']
+    AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     AFlex: typeof import('ant-design-vue/es')['Flex']
     ALayout: typeof import('ant-design-vue/es')['Layout']
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
@@ -17,6 +20,7 @@ declare module 'vue' {
     ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     ARow: typeof import('ant-design-vue/es')['Row']
+    AStatistic: typeof import('ant-design-vue/es')['Statistic']
     CommonHeader: typeof import('./src/components/CommonHeader/index.vue')['default']
     CommonSider: typeof import('./src/components/CommonSider/index.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
