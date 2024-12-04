@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AApp: typeof import('ant-design-vue/es')['App']
     AButton: typeof import('ant-design-vue/es')['Button']
     ACard: typeof import('ant-design-vue/es')['Card']
     ACol: typeof import('ant-design-vue/es')['Col']
@@ -23,19 +22,12 @@ declare module 'vue' {
     AStatistic: typeof import('ant-design-vue/es')['Statistic']
     CommonHeader: typeof import('./src/components/CommonHeader/index.vue')['default']
     CommonSider: typeof import('./src/components/CommonSider/index.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
-    IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
-    IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
-    IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
-    IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
+    Moon: typeof import('./src/components/icons/Moon.vue')['default']
     OnlyIcon: typeof import('./src/components/icons/OnlyIcon.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SvgIcon: typeof import('./src/components/icons/SvgIcon.vue')['default']
+    Sun: typeof import('./src/components/icons/Sun.vue')['default']
     SvgIconDark: typeof import('./src/components/icons/SvgIconDark.vue')['default']
     SvgIconLight: typeof import('./src/components/icons/SvgIconLight.vue')['default']
-    TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
-    WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }
