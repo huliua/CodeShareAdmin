@@ -25,36 +25,74 @@ router.afterEach((to, from) => {
   menuStore.setHeaderSelectedKeys(['/' + pathArr[1]]);
   menuStore.setSideSelectedKeys([to.path]);
 });
+
+import { theme } from 'ant-design-vue';
+import { useAppStore, Theme } from '@/stores/app';
+import { computed } from 'vue';
+const appStore = useAppStore();
+
+const { useToken } = theme;
+const { token } = useToken();
+
+const { darkAlgorithm, defaultAlgorithm } = theme;
+
+const myTheme = computed(() => {
+  return {
+    algorithm: [appStore.theme === Theme.Dark ? darkAlgorithm : defaultAlgorithm],
+    components: {
+      Layout: {
+        colorBgHeader: token.value.colorBgBase,
+        colorText: token.value.colorText,
+      },
+    },
+    token: {
+      colorPrimary: appStore.colorPrimary,
+      borderRadius: appStore.borderRadius,
+    },
+  };
+});
 </script>
 
 <template>
-  <div id="base-layout">
-    <a-layout>
-      <a-layout-sider
-        class="side"
-        collapsible
-        v-model:collapsed="menuStore.collapsed"
-        width="250px"
-        :theme="'dark'"
-        style="background: #001529"
-        :trigger="null"
-      >
-        <common-sider />
-      </a-layout-sider>
-      <a-layout class="main-layout">
-        <a-layout-header class="header">
-          <common-header />
-        </a-layout-header>
-        <a-layout-content class="content">
-          <router-view />
-        </a-layout-content>
-        <a-layout-footer class="footer">
-          CodeShare代码分享平台 by
-          <a :href="link" target="_blank">{{ developer }}</a> @{{ currentYear }}
-        </a-layout-footer>
+  <a-config-provider :theme="myTheme">
+    <div id="base-layout">
+      <a-layout>
+        <a-layout-sider
+          class="side"
+          collapsible
+          v-model:collapsed="menuStore.collapsed"
+          width="250px"
+          :theme="'dark'"
+          style="background: #001529"
+          :trigger="null"
+        >
+          <common-sider />
+        </a-layout-sider>
+        <a-layout class="main-layout">
+          <a-layout-header class="header">
+            <a-config-provider
+              :theme="{
+                components: {
+                  Menu: {
+                    colorItemBg: token.colorBgBase,
+                  },
+                },
+              }"
+            >
+              <common-header />
+            </a-config-provider>
+          </a-layout-header>
+          <a-layout-content class="content">
+            <router-view />
+          </a-layout-content>
+          <a-layout-footer class="footer">
+            CodeShare代码分享平台 by
+            <a :href="link" target="_blank">{{ developer }}</a> @{{ currentYear }}
+          </a-layout-footer>
+        </a-layout>
       </a-layout>
-    </a-layout>
-  </div>
+    </div>
+  </a-config-provider>
 </template>
 
 <style scoped>

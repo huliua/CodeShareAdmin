@@ -47,12 +47,12 @@ defineComponent({
         <Moon
           @click="appStore.changeTheme()"
           v-show="appStore.theme === Theme.Light"
-          style="width: 20px; height: 20px"
+          style="width: 20px; height: 20px; fill: #000"
         />
         <Sun
           @click="appStore.changeTheme()"
           v-show="appStore.theme === Theme.Dark"
-          style="width: 20px; height: 20px"
+          style="width: 20px; height: 20px; fill: #fff"
         />
       </a-col>
       <a-col flex="100px">
