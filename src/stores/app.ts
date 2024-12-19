@@ -11,7 +11,7 @@ export const useAppStore = defineStore('app', () => {
   // 主题
   const theme = ref<string>(Theme.Light);
   const colorPrimary = ref<string>('#1890ff');
-  const borderRadius = ref<string>('6px');
+  const borderRadius = ref<number>(20);
 
   const changeTheme = () => {
     console.log('start to change Theme....');

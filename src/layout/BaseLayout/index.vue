@@ -72,9 +72,13 @@ const myTheme = computed(() => {
           <a-layout-header class="header">
             <a-config-provider
               :theme="{
+                token: {
+                  motionDurationSlow: '0s',
+                },
                 components: {
                   Menu: {
                     colorItemBg: token.colorBgBase,
+                    motionDurationSlow: '0s',
                   },
                 },
               }"
@@ -126,5 +130,9 @@ const myTheme = computed(() => {
 #base-layout .side {
   height: calc(100vh - 30px);
   overflow: auto;
+}
+
+#base-layout .main-layout {
+  transition: background-color 0.1s cubic-bezier(0, 0.57, 0.47, 0.49);
 }
 </style>
